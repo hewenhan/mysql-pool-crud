@@ -1,5 +1,6 @@
 # mysql-pool-crud
 
+```
 var mysqlConfig = {
 	connectionLimit: 20,
 	host: "127.0.0.1",
@@ -22,3 +23,4 @@ select(selectJson, function (err, rows, sql) {
 	}
 	console.log(rows);
 });
+```
