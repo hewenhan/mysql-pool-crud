@@ -1,0 +1,29 @@
+{
+  "name": "mysql-pool-crud",
+  "version": "1.0.0",
+  "description": "mysql-pool-crud",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.5.0",
+    "lodash": "^4.17.4",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hewenhan/mysql-pool-crud.git"
+  },
+  "keywords": [
+    "mysql",
+    "curd"
+  ],
+  "author": "Blind_Holmes <hewenhan@gmail.com> (http://blog.hewenhan.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hewenhan/mysql-pool-crud/issues"
+  },
+  "homepage": "https://github.com/hewenhan/mysql-pool-crud#readme"
+}

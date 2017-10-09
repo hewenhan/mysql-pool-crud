@@ -1,5 +1,3 @@
-# mysql-pool-crud
-
 var mysqlConfig = {
 	connectionLimit: 20,
 	host: "127.0.0.1",
@@ -8,7 +6,7 @@ var mysqlConfig = {
 	password: '123456',
 	database: 'uu'
 };
-require("mysql-pool-crud")(mysqlConfig);
+require("./index.js")(mysqlConfig);
 
 var selectJson = {
 	tableName: "test.users"
