@@ -54,8 +54,8 @@ module.exports = function (mysqlConfig) {
 	// 	callback:
 	//		"function(err, rows)"
 	select = function (dataJson, callback) {
-		if (typeof dataJson.limit == "undefined" || dataJson.limit > 100) {
-			dataJson.limit = 100;
+		if (typeof dataJson.limit == "undefined") {
+			dataJson.limit = 1000;
 		}
 		if (typeof dataJson.field == "undefined") {
 			dataJson.field = "*";
