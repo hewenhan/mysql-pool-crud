@@ -75,14 +75,14 @@ module.exports = function (mysqlConfig) {
 							console.log('MYSQL_ERROR: ' + new Date());
 							console.log(sql);
 							console.log(err);
-							callback(err, null, sql, function(){}, false);
+							callback(err, null, function(){}, false, sql);
 						}).on('fields', function(fields) {
 
 						}).on('result', function(row) {
 							connection.pause();
-							callback(null, row, sql, connection.resume, false);
+							callback(null, row, connection.resume, false, sql);
 						}).on('end', function() {
-							callback(err, null, sql, function(){}, true);
+							callback(err, null, function(){}, true, sql);
 						});
 						return;
 					}
