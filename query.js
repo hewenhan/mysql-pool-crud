@@ -80,7 +80,10 @@ module.exports = function (mysqlConfig) {
 
 						}).on('result', function(row) {
 							connection.pause();
-							callback(null, row, connection.resume, false, sql);
+							var next = function () {
+								connection.resume();
+							};
+							callback(null, row, next, false, sql);
 						}).on('end', function() {
 							callback(err, null, function(){}, true, sql);
 						});
