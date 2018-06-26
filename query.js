@@ -3,7 +3,7 @@ module.exports = function (mysqlConfig) {
 	var pool  = mysql.createPool(mysqlConfig);
 	var transAction = require ('./transAction')(mysqlConfig);
 
-	return function (sql, callback) {
+	return function (sql, callback, isStream) {
 		if (typeof sql == 'object' && typeof sql.length == 'number') {
 			transAction(sql, callback);
 		} else {	
@@ -66,6 +66,23 @@ module.exports = function (mysqlConfig) {
 							if (typeof callback == 'function') {
 								callback(connection);
 							}
+						});
+						return;
+					}
+					if (isStream) {
+						// callback(err, row, next, success);
+						connection.query(sql).on('error', function(err) {
+							console.log('MYSQL_ERROR: ' + new Date());
+							console.log(sql);
+							console.log(err);
+							callback(err, null, sql, function(){}, false);
+						}).on('fields', function(fields) {
+
+						}).on('result', function(row) {
+							connection.pause();
+							callback(null, row, sql, connection.resume, false);
+						}).on('end', function() {
+							callback(err, null, sql, function(){}, true);
 						});
 						return;
 					}
