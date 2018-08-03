@@ -1,6 +1,6 @@
 {
   "name": "mysql-pool-crud",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "mysql-pool-crud",
   "main": "index.js",
   "dependencies": {
