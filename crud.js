@@ -157,8 +157,11 @@ module.exports = function (mysqlConfig) {
 				return;
 			}
 			if (rows.length == 0) {
-				console.log('INSERT');
 				insert(dataJson, function (err, results) {
+					if (results == null) {
+						results = {};
+					}
+					results.insertOrUpdateType = 'INSERT';
 					callback(err, results);
 				});
 				return;
@@ -167,8 +170,13 @@ module.exports = function (mysqlConfig) {
 			for (var i = 0; i < dataJson.uniqueFieldName.length; i++) {
 				dataJson.where[dataJson.uniqueFieldName[i]] = dataJson.data[dataJson.uniqueFieldName[i]];
 			}
-			console.log('UPDATE');
-			update(dataJson, callback);
+			update(dataJson, function (err, results) {
+				if (results == null) {
+					results = {};
+				}
+				results.insertOrUpdateType = 'UPDATE';
+				callback(err, results);
+			});
 		});
 	};
 
