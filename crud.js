@@ -174,6 +174,9 @@ module.exports = function (mysqlConfig) {
 				if (results == null) {
 					results = {};
 				}
+				if (rows[0].id) {
+					results.insertId = rows[0].id;
+				}
 				results.insertOrUpdateType = 'UPDATE';
 				callback(err, results);
 			});
