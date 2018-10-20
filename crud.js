@@ -26,7 +26,7 @@ module.exports = function (mysqlConfig) {
 		var result = " WHERE ";
 		for (var i = 0; i < keys.length; i++) {
 			var thisObjValue = whereObj[keys[i]];
-			if (typeof thisObjValue == "object" && typeof thisObjValue.length != "undefined") {
+			if (thisObjValue instanceof Array) {
 				result += "`" + keys[i] + "` IN (";
 				for (var j = 0; j < thisObjValue.length; j++) {
 					result += '"' + encodeSqlText(thisObjValue[j]) + '"';
