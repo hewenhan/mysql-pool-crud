@@ -9,7 +9,7 @@ var mysqlConfig = {
 require("./index.js")(mysqlConfig);
 
 var selectJson = {
-	tableName: "test.users"
+	tableName: "uu.user_center_info"
 };
 
 select(selectJson, function (err, rows, sql) {
